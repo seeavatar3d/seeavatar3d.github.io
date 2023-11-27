@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>AvatarVerse</title>
+<link href="./SEEAvatar_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./SEEAvatar_files/jquery.mlens-1.0.min.js"></script>
+<script type="text/javascript" src="./SEEAvatar_files/jquery.js"></script>
+
+
+<style>
+  p.serif{
+    font-family:"Times New Roman", Times, serif;
+  }
+  p.sansserif{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .text-center {
+    text-align: center;
+}
+</style>
+  
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>SEEAvatar: Photorealistic Text-to-3D Avatar Generation with Constrained Geometry and Appearance</strong></h1>
+  <p id="authors" class="serif">
+    <a href="mailto:yuanyouxu@outlook.com">Yuanyou Xu<sup>1</sup></a>
+    <a  href="mailto:zongxinyang@zju.edu.cn">Zongxin Yang<sup>1</sup></a>
+    <a href="mailto:yangyics@zju.edu.cn">Yi Yang<sup>1</sup></a>
+    <br>
+    <span style="font-size: 0.8em; margin-top: 0.5em">
+      <a><sup>1</sup>Zhejiang University</a>
+    </span>
+  </p>
+
+  <font size="+1">
+    <p style="text-align: center;" class="serif">
+      <a href="" target="_blank" style="font-weight: bold;">[Arxiv]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="" target="_blank" style="font-weight: bold;">[Github]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+  </font>
+
+<!--  <p style="text-align: left; font-size: 18px; margin: 10px;" class="serif">-->
+<!--    Generated with CivitAI models:-->
+<!--    <a href="https://civitai.com/models/30240/toonyou">ToonYou</a>-->
+<!--    <a href="https://civitai.com/models/22922/lyriel">Lyriel</a>-->
+<!--    <a href="https://civitai.com/models/43331/majicmix-realistic">majicMIX Realistic</a>-->
+<!--    <a href="https://civitai.com/models/66347/rcnz-cartoon-3d">RCNZ Cartoon 3d</a>-->
+<!--  </p>-->
+
+</div>
+
+<div class="content">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Methodology</p>
+  <p style="font-size: 1.2em" class="serif">
+    
+  </p>
+  <img class="summary-img" src="figs/method.jpg" style="width:100%;"> <br>
+</div>
+
+
+
+</body>
+
+<script>
+var videos = document.getElementsByClassName("clickplay");
+for (var i = 0; i < videos.length; i++) {
+  videos[i].addEventListener("click", function() {
+    this.play();
+  });
+  videos[i].addEventListener("ended", function() {
+    this.pause();
+    this.currentTime = 0;
+  });
+}
+
+document.querySelectorAll('.info-container').forEach(function(container) {
+  container.addEventListener('mouseover', function() {
+    var infoText = container.querySelector('.info-text');
+    infoText.style.display = 'block';
+  });
+
+  container.addEventListener('mouseout', function() {
+    var infoText = container.querySelector('.info-text');
+    infoText.style.display = 'none';
+  });
+});
+</script>
+
+</html>
