@@ -1,249 +1,219 @@
+
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SEEAvatar</title>
-<link href="./SEEAvatar_files/style.css" rel="stylesheet">
-<script type="text/javascript" src="./SEEAvatar_files/jquery.mlens-1.0.min.js"></script>
-<script type="text/javascript" src="./SEEAvatar_files/jquery.js"></script>
-
-
-<style>
-  p.serif{
-    font-family:"Times New Roman", Times, serif;
-  }
-  p.sansserif{
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .text-center {
-    text-align: center;
-}
-</style>
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bulma css template -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- model viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+  <title>
+    SEEAvatar
+  </title>
+  <link rel="icon" href="icon.ico">
 </head>
-
 <body>
-<div class="content">
-  <h1><strong>🧐SEEAvatar: Photorealistic Text-to-3D Avatar Generation with Constrained Geometry and Appearance</strong></h1>
-  <!-- <p id="authors" class="serif">
-    <a href="mailto:yuanyouxu@outlook.com">Yuanyou Xu<sup>1</sup></a>
-    <a  href="mailto:zongxinyang@zju.edu.cn">Zongxin Yang<sup>1</sup></a>
-    <a href="mailto:yangyics@zju.edu.cn">Yi Yang<sup>1</sup></a>
+  <section class="section">
+
+  <div class="container has-text-centered">
+    <!-- paper title -->
+    <p class="title is-3"> 🧐SEEAvatar: Photorealistic Text-to-3D Avatar Generation with Constrained Geometry and Appearance </p>
+
     <br>
-    <span style="font-size: 0.8em; margin-top: 0.5em">
-      <a><sup>1</sup>Zhejiang University</a>
-    </span>
-  </p> -->
+    <video  width="100%" loop autoplay muted>
+      <source src="animations/open.mp4" type="video/mp4">
+    </video>
+    <h1 style="text-align:center"><em>Photorealistic avatars represented in meshes and textures generated from text prompt by our method, rendered in 3D scenes with additional 3D assets.</em></h3>
+  </div>
 
-  <!-- <font size="+1">
-    <p style="text-align: center;" class="serif">
-      <a href="" target="_blank" style="font-weight: bold;">[Arxiv]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="" target="_blank" style="font-weight: bold;">[Github]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- main container -->
+  <div class="container is-max-desktop has-text-centered">
+    
+    <!-- abstract -->
+    <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+    <p class="content is-size-6 has-text-left">
+      - Powered by large-scale text-to-image generation models, text-to-3D avatar generation has made promising progress. However, most methods fail to produce photorealistic results, limited by imprecise geometry and low-quality appearance. Towards more practical avatar generation, we present SEEAvatar, a method for generating photorealistic 3D avatars from text with SElf-Evolving constraints for decoupled geometry and appearance.
+      <br>
+      - For geometry, we propose to constrain the optimized avatar in a decent global shape with a template avatar. The template avatar is initialized with human prior and can be updated by the optimized avatar periodically as an evolving template, which enables more flexible shape generation. Besides, the geometry is also constrained by the static human prior in local parts like face and hands to maintain the delicate structures.
+      <br>
+      - For appearance generation, we use diffusion model enhanced by prompt engineering to guide a physically based rendering pipeline to generate realistic textures. The lightness constraint is applied on the albedo texture to suppress incorrect lighting effect. 
+      <br>
+      - Experiments show that our method outperforms previous methods on both global and local geometry and appearance quality by a large margin. Since our method can produce high-quality meshes and textures, such assets can be directly applied in classic graphics pipeline for realistic rendering under any lighting condition. 
     </p>
-  </font> -->
-  <!-- <img class="summary-img" src="figs/open.jpg" style="width:100%;"> <br> -->
-  <video  width="100%" loop autoplay muted>
-    <source src="animations/open.mp4" type="video/mp4">
-  </video>
-  <h3 style="text-align:center"><em>Photorealistic avatars represented in meshes and textures generated from text prompt by our method, rendered in 3D scenes with additional 3D assets.</em></h3>
-<!--  <p style="text-align: left; font-size: 18px; margin: 10px;" class="serif">-->
-<!--    Generated with CivitAI models:-->
-<!--    <a href="https://civitai.com/models/30240/toonyou">ToonYou</a>-->
-<!--    <a href="https://civitai.com/models/22922/lyriel">Lyriel</a>-->
-<!--    <a href="https://civitai.com/models/43331/majicmix-realistic">majicMIX Realistic</a>-->
-<!--    <a href="https://civitai.com/models/66347/rcnz-cartoon-3d">RCNZ Cartoon 3d</a>-->
-<!--  </p>-->
+    <img class="summary-img" src="figs/method.jpg" style="width:100%;">
+    <br>
+    
+    <!-- results (videos) -->
+    <p class="title is-3 mt-5 has-text-centered"> Results </p>
+    <p class="content has-text-centered is-size-5">
+      All avatars are generated and rendered in full-body manner. Heads are rendered in a larger size for better view.
+    </p>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/batman.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/joker.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/spiderman.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Batman </th>
+          <th class="has-text-centered"> Joker </th>
+          <th class="has-text-centered"> Spiderman </th>
+        </tr>
+    </table>
 
-</div>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/lincoln.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/obama.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/hillary.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Abraham Lincoln </th>
+          <th class="has-text-centered"> Barack Obama </th>
+          <th class="has-text-centered"> Hillary Clinton </th>
+        </tr>
+    </table>
 
-<div class="content">
-  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Methodology</p>
-  <p style="font-size: 1.2em" class="serif">
-    Powered by large-scale text-to-image generation models, text-to-3D avatar generation has made promising progress. However, most methods fail to produce photorealistic results, limited by imprecise geometry and low-quality appearance. Towards more practical avatar generation, we present SEEAvatar, a method for generating photorealistic 3D avatars from text with SElf-Evolving constraints for decoupled geometry and appearance.
-For geometry, we propose to constrain the optimized avatar in a decent global shape with a template avatar. The template avatar is initialized with human prior and can be updated by the optimized avatar periodically as an evolving template, which enables more flexible shape generation. Besides, the geometry is also constrained by the static human prior in local parts like face and hands to maintain the delicate structures.
-For appearance generation, we use diffusion model enhanced by prompt engineering to guide a physically based rendering pipeline to generate realistic textures. The lightness constraint is applied on the albedo texture to suppress incorrect lighting effect. 
-Experiments show that our method outperforms previous methods on both global and local geometry and appearance quality by a large margin. Since our method can produce high-quality meshes and textures, such assets can be directly applied in classic graphics pipeline for realistic rendering under any lighting condition. 
-  </p>
-  <img class="summary-img" src="figs/method.jpg" style="width:100%;"> <br>
-</div>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/beethoven.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/mozart.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/vincent.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Ludwig van Beethoven </th>
+          <th class="has-text-centered"> Wolfgang Amadeus Mozart </th>
+          <th class="has-text-centered"> Vincent van Gogh </th>
+        </tr>
+    </table>
 
-<div class="content">
-  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Results</p>
-  <p style="font-size: 1.2em" class="serif">
-    All avatars are generated and rendered in full-body manner. Heads are rendered in a larger size for better view.
-  </p>
-  <div class="row">
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/batman.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Batman</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/joker.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Joker</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/spiderman.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Spiderman</p>
-    </div>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/jack.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/strange.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/elsa.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Captain Jack Sparrow </th>
+          <th class="has-text-centered"> Doctor Strange </th>
+          <th class="has-text-centered"> Elsa in Frozen </th>
+        </tr>
+    </table>
+    <br>
+
+    <!-- comparison -->
+    <p class="title is-3 mt-5 has-text-centered"> Comparison </p>
+    <p class="content has-text-centered is-size-5">
+      Comparison with text-to-avatar methods, NeRF-based <a href="https://arxiv.org/abs/2305.12529" target="_blank">DreamWaltz</a> and mesh-based <a href="https://arxiv.org/abs/2308.10899" target="_blank">TADA</a>.
+    </p>
+    <video muted controls autoplay loop> <source src="animations/avatar_compare.mp4" type="video/mp4"> </video>
+    <br><br>
+
+    <!-- Animation -->
+    <p class="title is-3 mt-5 has-text-centered"> Animation </p>
+    <p class="content has-text-centered is-size-5">
+      Generated avatars are animated by retargeting motion sequences from <a href="https://www.mixamo.com" target="_blank">Mixamo</a>.
+    </p>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/joker_motion1.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/spiderman_motion1.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/bruce_motion1.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Joker turning around </th>
+          <th class="has-text-centered"> Spiderman swinging </th>
+          <th class="has-text-centered"> Bruce Lee kicking </th>
+        </tr>
+    </table>
+    <br>
+
+    <!-- Relighting -->
+    <p class="title is-3 mt-5 has-text-centered"> Relighting </p>
+    <p class="content has-text-centered is-size-5">
+      Generated avatars are lighted by multiple lights with different colors from different angles.
+    </p>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+        <col span="1" style="width: 33%;">
+      </colgroup>
+      <tbody>
+        <tr> 
+          <th> <video muted controls autoplay loop> <source src="animations/joker_light1.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/spiderman_light1.mp4" type="video/mp4"> </video> </th>
+          <th> <video muted controls autoplay loop> <source src="animations/bruce_light1.mp4" type="video/mp4"> </video> </th>
+        </tr>
+        <tr>
+          <th class="has-text-centered"> Joker lighted </th>
+          <th class="has-text-centered"> Spiderman lighted </th>
+          <th class="has-text-centered"> Bruce Lee lighted </th>
+        </tr>
+    </table>
+
+
   </div>
 
-  <div class="row">
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/lincoln.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Abraham Lincoln</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/obama.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Barack Obama</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/hillary.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Hillary Clinton</p>
-    </div>
 
-    <div class="row">
-      <div class="col">
-        <video  width="100%" loop autoplay muted>
-          <source src="animations/beethoven.mp4" type="video/mp4">
-        </video>
-        <p class="text-center">Ludwig van Beethoven</p>
-      </div>
-      <div class="col">
-        <video  width="100%" loop autoplay muted>
-          <source src="animations/mozart.mp4" type="video/mp4">
-        </video>
-        <p class="text-center">Wolfgang Amadeus Mozart</p>
-      </div>
-      <div class="col">
-        <video  width="100%" loop autoplay muted>
-          <source src="animations/vincent.mp4" type="video/mp4">
-        </video>
-        <p class="text-center">Vincent van Gogh</p>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <video  width="100%" loop autoplay muted>
-            <source src="animations/jack.mp4" type="video/mp4">
-          </video>
-          <p class="text-center">Captain Jack Sparrow</p>
-        </div>
-        <div class="col">
-          <video  width="100%" loop autoplay muted>
-            <source src="animations/strange.mp4" type="video/mp4">
-          </video>
-          <p class="text-center">Doctor Strange</p>
-        </div>
-        <div class="col">
-          <video  width="100%" loop autoplay muted>
-            <source src="animations/elsa.mp4" type="video/mp4">
-          </video>
-          <p class="text-center">Elsa in Frozen</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="content">
-  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Comparison</p>
-  <p style="font-size: 1.2em" class="serif">
-    Comparison with text-to-avatar methods, NeRF-based <a href="" target="https://arxiv.org/abs/2305.12529">DreamWaltz</a> and mesh-based <a href="" target="https://arxiv.org/abs/2308.10899">TADA</a>.
-  </p>
-  <div class="row">
-    <div class="col-full">
-      <video  width="100%" loop controls>
-        <source src="animations/avatar_compare.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</div>
-
-<div class="content">
-  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Demos</p>
-  <p style="font-size: 1.2em" class="serif">
-    Generated avatars are animated by retargeting motion sequences.
-  </p>
-  <div class="row">
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/joker_motion.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Joker turning around</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/spiderman_motion.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Spiderman swinging</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/bruce_motion.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Bruce Lee kicking</p>
-    </div>
-  </div>
-  <p style="font-size: 1.2em" class="serif">
-    Generated avatars are lighted by multiple lights with different colors from different angles.
-  </p>
-  <div class="row">
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/joker_light.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Joker lighted</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/spiderman_light.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Spiderman lighted</p>
-    </div>
-    <div class="col">
-      <video  width="100%" loop autoplay muted>
-        <source src="animations/bruce_light.mp4" type="video/mp4">
-      </video>
-      <p class="text-center">Bruce Lee lighted</p>
-    </div>
-  </div>
-</div>
+  </section>
 </body>
-
 <script>
-var videos = document.getElementsByClassName("clickplay");
-for (var i = 0; i < videos.length; i++) {
-  videos[i].addEventListener("click", function() {
-    this.play();
+  var videos = document.getElementsByClassName("clickplay");
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].addEventListener("click", function() {
+      this.play();
+    });
+    videos[i].addEventListener("ended", function() {
+      this.pause();
+      this.currentTime = 0;
+    });
+  }
+  
+  document.querySelectorAll('.info-container').forEach(function(container) {
+    container.addEventListener('mouseover', function() {
+      var infoText = container.querySelector('.info-text');
+      infoText.style.display = 'block';
+    });
+  
+    container.addEventListener('mouseout', function() {
+      var infoText = container.querySelector('.info-text');
+      infoText.style.display = 'none';
+    });
   });
-  videos[i].addEventListener("ended", function() {
-    this.pause();
-    this.currentTime = 0;
-  });
-}
-
-document.querySelectorAll('.info-container').forEach(function(container) {
-  container.addEventListener('mouseover', function() {
-    var infoText = container.querySelector('.info-text');
-    infoText.style.display = 'block';
-  });
-
-  container.addEventListener('mouseout', function() {
-    var infoText = container.querySelector('.info-text');
-    infoText.style.display = 'none';
-  });
-});
 </script>
-
 </html>
